@@ -1,0 +1,151 @@
+@use '../base/variables' as *;
+
+.sidebar > * {
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar{
+    background: $color-bg;
+    width: 100vh;
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    &::before{
+        position: absolute;
+        content: "";
+        top: 0%;
+        right: -90%;
+        height: 300px;
+        width: 300px;
+        background: radial-gradient(circle, #90AB39, transparent 100%);
+        filter: blur(75px);
+        z-index: 0;
+    }
+    &::after{
+        position: absolute;
+        content: "";
+        top: 9%;
+        right: -102%;
+        height: 300px;
+        width: 300px;
+        background: radial-gradient(circle, #CB4628, transparent 100%);
+        filter: blur(75px);
+        z-index: 0;
+    }
+
+    &__body{
+        padding: 0 25px;
+    }
+
+    &__logo{
+        width: 131px;
+        margin: 3.65rem auto 4.6rem auto;
+
+    }
+
+    &__nav{
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        font-size: 14px;
+        row-gap: 1em;
+        margin-bottom: 6rem;
+        &--item{
+            color: $color-text-additional;
+            font-family: $font-additional;
+            font-weight: 400;
+            display: flex;
+            flex-direction: row;
+            column-gap: 1.5em;
+            
+            padding: 1em 4.5em 1em 1.1em;
+            justify-content: start;
+            align-items: center;
+
+
+            &.active{
+                border-radius: 13px;
+                background-color: $color-accent;
+                color: $color-text-accent;
+                font-weight: 700;
+            }
+        }
+    }
+
+    &__promo{
+     
+        background-color: #F6FCE0;
+        border-radius: 37px;
+        padding: 2rem 0rem 0 1rem;
+        margin-bottom: 3rem;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.8rem;
+
+
+        &-header{
+          
+            font-family: $font-main;
+            display: flex;
+            flex-direction: column;
+            padding-right: 2.2rem;
+            &--discount{
+                
+                font-size: 20px;
+                font-weight: 700;
+            }
+
+            &--text{
+                
+                font-size: 14px;
+                padding-top: 0.45em;
+                font-weight: 400;
+            }
+        }
+
+
+
+        &-bottom{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-left: 0.5rem;
+            padding-right: 0.35rem;
+            align-items: center;
+            &--arrow{
+                position: relative;
+                padding-bottom: 0.5rem;
+                color: white;
+                width: 1rem;
+                height: 1rem;
+                z-index: 1;
+                
+                &::after{
+                    content: "";
+                    
+                    border-radius: 50%;
+                    background-color: $color-accent-2;
+                    position: absolute;
+                    top: 33%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 2rem;
+                    height: 2rem;
+                    z-index: 0;
+                }
+            }
+
+            &--calendar{
+                width: 100.765px;
+                height: 74.639px;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    
+}

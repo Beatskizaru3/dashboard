@@ -1,0 +1,14 @@
+@use './media';
+@use '../base/variables' as *;
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1440px;
+    
+}
+
+body{
+    font-family: $font-main;
+}
+
