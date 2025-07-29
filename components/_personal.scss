@@ -1,22 +1,97 @@
 @use "../base/variables" as *;
 
 .personal{
+    background-color: $color-bg;
     display: flex;
     flex-direction: column;
+    padding-top: 2.68rem;
 
     &__profile{
         display: flex;
         flex-direction: row;
-
+        column-gap: 1.25rem;
+        
         &-img{
             border-radius: 50%;
             width: 64px;
             height: 64px;
         }
-
+        
         &-header{
             display: flex;
             flex-direction: column;
+            margin-bottom: 2.5rem;
+            padding-top: 0.375rem;
+            &--name{
+                color: $color-text-main;
+                font-family: $font-main;
+                font-size: 1.5rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                &::after{
+                    content: "";
+                    display: inline-block;
+                    background-image: url('../public/svgs/down-arrow.svg');
+                    background-repeat: no-repeat;
+                    width: 24px;
+                    height: 24px;
+                   
+                }
+            }
+            &--level{
+                color: $color-text-additional;
+                font-family: $font-main;
+                font-size: 1rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+        
+    }
+    &__widget{
+        display: flex;
+        flex-direction: column;
+        &-date{
+            flex-direction: row;
+            display: flex;
+            align-items: center;
+            column-gap: 5.315rem;
+        }
+
+        &-month-year{
+            color: $color-text-main;
+            text-align: center;
+            font-family: $font-main;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.5;
+            padding-top: 0.2rem;
+            letter-spacing: 0.14px;
+            text-transform: uppercase;
+        }
+        &-navigate{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            &--left{
+                display: flex;
+                align-items: center;
+                color: $color-text-additional;
+                background-color: transparent;
+                border: none;
+                margin: 0;
+            }
+            &--right{
+                display: flex;
+                align-items: center;
+                color: $color-text-additional;
+                background-color: transparent;
+                border: none;
+                margin: 0;
+            }
         }
     }
 }
