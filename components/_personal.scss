@@ -1,0 +1,22 @@
+@use "../base/variables" as *;
+
+.personal{
+    display: flex;
+    flex-direction: column;
+
+    &__profile{
+        display: flex;
+        flex-direction: row;
+
+        &-img{
+            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+        }
+
+        &-header{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

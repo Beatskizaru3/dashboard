@@ -1,4 +1,5 @@
 .dashboard{
-    display: flex;
+    display: grid;
+    grid-template-columns: 260px 830fr 350fr;
     flex-direction: row;
 }

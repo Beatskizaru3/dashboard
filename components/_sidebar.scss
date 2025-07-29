@@ -64,13 +64,22 @@
             padding: 1em 4.5em 1em 1.1em;
             justify-content: start;
             align-items: center;
-
+            border-radius: 13px;
+            cursor: pointer;
+            &:hover{
+                transition: background-color 0.2s ease-in-out,
+                color 0.2s ease-in-out;
+                background-color: $color-text-main;
+                color: $color-text-accent;
+                
+            }
 
             &.active{
                 border-radius: 13px;
                 background-color: $color-accent;
                 color: $color-text-accent;
                 font-weight: 700;
+                cursor: default;
             }
         }
     }

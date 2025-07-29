@@ -1,0 +1,338 @@
+@use "../base/variables" as *;
+
+.main{
+    background-color: $color-bg;
+    padding: 2.5rem 1.5rem 2.5rem 2.5rem;
+    &__header{
+
+        display: flex;
+        flex-direction: row;
+        column-gap: 43px;
+        &-search{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            background-color: $color-bg-card; 
+            max-width: 30rem;
+            width: 100%;
+            padding-left: 1.85rem;
+            border-radius: 14px;
+            color: $color-text-additional;
+            
+            &--svg{
+                color: $color-text-additional;
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+
+            input{
+                background-color: transparent;
+                border: none;
+                width: 100%;
+                color: $color-text-main;
+                padding-left: 0.8rem;
+                font-size: 0.875rem;
+                display: flex;
+                align-items: center;
+                line-height: 1.5;
+                font-size: 0.875rem;
+                box-sizing: border-box;
+                
+                
+
+
+                &::placeholder{
+                    color: $color-text-additional;
+                    
+                    
+                }
+                &:focus{
+                    border: none;
+                    outline: none;
+                }
+            }
+
+            &--btn{
+                margin-left: auto;
+                background-color: $color-accent;
+                border: none;
+                border-radius: 14px;
+                padding: 1.31rem  2.31rem;
+                font-size: 16px;
+                font-weight: 700;
+                color: $color-bg-card;
+            }
+        }
+
+        &-notifications{
+            position: relative;
+            color: $color-text-additional;
+            background-color: $color-bg-card;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            &::after{
+                content: "";
+                position: absolute;
+                right: 5px;
+                top: 0;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: #EC502C;
+            }
+            svg{
+                position: absolute;
+                left: 29%;
+                top: 28%
+            }
+        }
+    }
+
+    &__welcome{
+        margin-top: 2.55rem;
+        font-family: $font-main;
+        h2{
+            font-weight: 700;
+            font-size: 2rem;
+            color: $color-text-main;
+        }
+        p{
+            padding-top: 0.47rem;
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: $color-text-additional;
+        }
+    }
+
+    &__proposals{
+        display: flex;
+        flex-direction: column;
+        &-header{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 1.875rem;
+        h3{
+            color: $color-text-main;
+            font-family: $font-main;
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        button{
+            border: none;
+            box-shadow: none;
+            color: $color-accent;
+            background-color: transparent;
+            font-family: $font-main;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+        }
+
+        &-cards{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 1.7rem;
+            margin-top: 1.5rem;
+        }
+        &-card{
+            max-width: 242px;
+            max-height: 292px;
+            background-color: $color-bg-card;
+            font-family: $font-main;
+            border-radius: 24px;
+            &--img{
+                width: 226px; 
+                height: 180px;
+                object-fit: cover;   
+                padding: 0.5rem 0.5rem 0 0.5rem;    
+                border-radius: 24px;
+                display: block;
+            }
+            h4{
+            color: $color-text-main;
+            font-weight: 400;
+            font-size: 1.25rem;
+            padding: 1rem 0 1rem 1rem   ;
+            }
+            &-bottom{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                border-radius: 0 0 24px 24px;
+                padding: 1rem 1rem 0.81rem 1rem;
+                border-top: 1px dashed $color-text-additional;
+                align-items: center;
+                    &-starting{
+                        font-size: 0.875rem;
+                        font-weight: 400;
+                        color: $color-text-additional;
+                        line-height: 1;
+                        &--paddle{
+                            font-size: 0.875rem;
+                            font-weight: 400;
+                            line-height: 1;
+                        }
+                    }
+                    &-price{
+                        font-size: 1.125rem;
+                        font-weight: 700;
+                        line-height: 1;
+                        position: relative;
+                        color: $color-text-main;
+                        &::before{
+                            position: absolute;
+                            top: -20%;
+                            left: -1.35rem;
+                            content: "";
+                            mask: url("../public/svgs/rupee.svg");
+                            mask-size: contain;
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            
+                            background-color: $color-text-main;
+                        }
+                        &--paddle{
+                            font-size: 1.125rem;
+                            font-weight: 700;
+                            line-height: 1;
+                            position: relative;
+                            &::before{
+                                position: absolute;
+                                top: -20%;
+                                left: -1.35rem;
+                                content: "";
+                                mask: url("../public/svgs/rupee.svg");
+                                mask-size: contain;
+                                display: inline-block;
+                                width: 20px;
+                                height: 20px;
+                                background-color: $color-bg;
+                            }
+                        }
+                        
+                    }
+                &.paddle{
+                    background-color: $color-accent;
+                    color: $color-bg;
+                    border-top: none;
+                }
+            }
+        }
+    }   
+
+    &__filter{
+        margin-top: 1.5rem;
+        &-header{
+            display: flex;
+            flex-direction: row;
+            column-gap: 3.125rem;
+        }
+        &-option{
+            font-family: $font-main;
+            color: $color-text-additional;
+            font-size: 1.5rem;
+            &.active{
+                font-weight: 700;
+                color: $color-text-main;
+            }
+        }
+
+        &-cards{
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            row-gap: 1.5rem;
+            column-gap: 1.5rem;
+        }
+
+        &-card{
+            display: flex;
+            flex-direction: row;
+            background-color: $color-bg-card;
+            border-radius: 24px;
+            font-family: $font-main;
+            padding: 1rem;
+            column-gap: 1rem;
+            &-img{
+                width: 102px;
+                height: 102px;
+                border-radius: 32px;
+                object-fit: cover;
+            }
+            &-body{
+                display: flex;
+                flex-direction: column;
+                padding-top: 0.42rem;
+                &-resort{
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    color: $color-text-main;
+                    margin-bottom: 0.5rem;
+                }
+
+                &-location{
+                    font-size: 0.875rem;
+                    color: $color-text-additional;
+                    &::before{
+                        margin-right: 0.31rem;
+                        content: url('../public/svgs/dot.svg');
+                        width: 9px;
+                        height: 12px;
+                    }
+                }
+                &-price{
+                    display: flex;
+                    
+                    &::before{
+                        
+                        content: "";
+                        mask: url("../public/svgs/rupee.svg");
+                        mask-size: contain;
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        
+                        background-color: $color-accent;
+                    }
+                    margin-top: 1rem;
+                    color: $color-accent;
+                    font-weight: 700;
+                    font-size: 1.25rem;
+                    
+                    span{
+                        display: flex;
+                        align-items: center;
+                        &:first-of-type{
+                            color: #5F647E;
+                            font-family: $font-main;
+                            font-size: 1rem;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+                            margin-left: 0.25rem;
+                            margin-right: 0.25rem;
+                        }
+                        &:last-of-type{
+                            color: #5F647E;
+                            font-family: $font-main;
+                            font-size: 0.85rem;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+                        }
+                    }
+                        
+                    
+                }
+            }
+        }
+    }
+}
