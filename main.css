@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .dashboard {
   display: grid;
   grid-template-columns: 260px 830fr 350fr;
@@ -854,6 +855,7 @@ body {
 .personal__widget-date {
   flex-direction: row;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   column-gap: 5.315rem;
   position: relative;
@@ -917,6 +919,91 @@ body {
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
+}
+.personal__widget-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: auto;
+  margin-top: 1rem;
+}
+.personal__widget-day {
+  position: relative;
+  z-index: 2;
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 23.52px;
+  width: 23.52px;
+  cursor: pointer;
+}
+.personal__widget-day.in-range {
+  position: relative;
+  z-index: 1;
+}
+.personal__widget-day.in-range::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%; /* расширяем влево за пределы ячейки */
+  right: -60%;
+  bottom: 0;
+  background-color: #2a2c3b;
+  z-index: 0;
+  border-radius: 0;
+}
+.personal__widget-day.choosenForDay {
+  background-color: #EC502C;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+.personal__widget-day.choosenForDay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -20%; /* расширяем влево за пределы ячейки */
+  width: 1rem;
+  bottom: 0;
+  background-color: #2a2c3b;
+  z-index: 1;
+  border-radius: 0;
+}
+.personal .choosenForEndDay {
+  background-color: #EC502C;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+.personal .empty {
+  text-align: center;
+  font-family: "Helvetica Neue";
+  font-size: 0.85rem;
+  color: #D0D4E7;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.personal .today {
+  border: 1px solid #D0D4E7;
+  border-radius: 50px;
+  position: relative;
+  z-index: 2;
+}
+.personal .day-text {
+  text-align: center;
+  font-family: "Helvetica Neue";
+  font-size: 0.85rem;
+  color: #D0D4E7;
+  transform: translateY(1px);
+  position: relative;
+  z-index: 2;
+}
+.personal .day-text.choosenForText {
+  color: white;
+  position: relative;
+  z-index: 2;
 }
 
 /*# sourceMappingURL=main.css.map */

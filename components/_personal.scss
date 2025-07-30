@@ -59,6 +59,7 @@
         &-date{
             flex-direction: row;
             display: flex;
+            justify-content: space-between;
             align-items: center;
             column-gap: 5.315rem;
             position: relative;
@@ -126,5 +127,101 @@
                 text-transform: uppercase;
             }
         }
+        &-dates{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            column-gap: auto;
+            margin-top: 1rem;
+        }
+        &-day{
+            position: relative;
+            z-index: 2;
+            margin: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            
+            height: 23.52px;
+            width: 23.52px;
+            cursor: pointer;
+            &.in-range{
+                position: relative;
+                z-index: 1;
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: -60%;  /* расширяем влево за пределы ячейки */
+                    right: -60%;
+                    bottom: 0;
+                    background-color: #2a2c3b;
+                    z-index: 0;
+                    border-radius: 0;
+                }
+            }
+            &.choosenForDay{
+            background-color: $color-accent-2;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+          
+               &::before{
+                   
+                   content: "";
+                   position: absolute;
+                   top: 0;
+                   left: -20%;  /* расширяем влево за пределы ячейки */
+                   width: 1rem;
+                   bottom: 0;
+                   background-color: #2a2c3b;
+                   z-index: 1;
+                   border-radius: 0;
+               }
+           }
+            
+        }
+            
+        }
+
+        .choosenForEndDay{
+            background-color: $color-accent-2;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            
+        }
+
+        .empty{
+            text-align: center;
+            font-family: $font-main;
+            font-size: 0.85rem;
+            color: $color-text-main;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .today{
+            border: 1px solid $color-text-main;
+            border-radius: 50px;
+            position: relative;
+            z-index: 2;  
+        }
+        .day-text{
+            text-align: center;
+            font-family: $font-main;
+            font-size: 0.85rem;
+            color: $color-text-main;
+            transform: translateY(1px);
+            position: relative;
+            z-index: 2;
+            &.choosenForText{
+                    
+                    color: white;
+                    position: relative;
+                    z-index: 2;
+                }
+        }
+        
     }
-}
