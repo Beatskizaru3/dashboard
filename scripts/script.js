@@ -19,7 +19,8 @@ renderCalendar(currentMonth, currentYear);
 
 let startDate = null;
 let endDate = null;
-
+let firstDay = null;
+let endDay = null;
 
 
 
@@ -79,7 +80,7 @@ function renderCalendar(month, year){
         circle.classList.add("circle");
         dayInMonth.classList.add("personal__widget-day");
         if (day == realDate && month == realMonth && year == realYear){
-            dayInMonth.classList.add("today");
+            circle.classList.add("today");
             console.log("today applied");
             console.log(day , month, year);
             console.log(today, currentMonth, currentYear);
@@ -93,28 +94,38 @@ function renderCalendar(month, year){
                 startDate = new Date(currentYear, currentMonth, day);
                 endDate = null;
 
+                firstDay = dayInMonth;
                 clearAllSelections();
                 console.log("selectionCleaned");
-                markAsStart(dayInMonth, textInDay);
+                markAsStart(dayInMonth, circle,textInDay);
                 console.log("start marked")
-                console.log("start date: ", startDate, "end date: ", endDate);
+               
             } else if (endDate === null){
                 endDate = new Date(currentYear, currentMonth, day);
-
+                endDay = dayInMonth;
                 if (endDate < startDate){
+                    
                     [startDate, endDate] = [endDate, startDate];
+                    markAsEnd(firstDay,circle,textInDay);
+                    endDay.classList.add('start-with-second-date', 'choosenForDay');
+                    highLightRange(startDate, endDate);
+                } else{
+                    firstDay.classList.add('start-with-second-date');
+                    markAsEnd(dayInMonth, circle,textInDay);
+                    
+                    console.log("end marked");
+                   
+                    highLightRange(startDate, endDate);
+
                 }
 
-                markAsEnd(dayInMonth, textInDay);
-                console.log("end marked");
-                console.log("start date: ", startDate, "end date: ", endDate);
-                highLightRange(startDate, endDate);
                
             }
 
             
         })
-        dayInMonth.appendChild(textInDay)
+        circle.appendChild(textInDay);
+        dayInMonth.appendChild(circle);
         datesContainer.appendChild(dayInMonth);
 
     }
@@ -122,6 +133,7 @@ function renderCalendar(month, year){
    
 
     function highLightRange(startDate, endDate){
+        console.log("start:", startDate, "end: ",endDate);
         const allDays = document.querySelectorAll(".personal__widget-day");
         allDays.forEach(el => {
             const dayText = el.querySelector("p");
@@ -134,24 +146,31 @@ function renderCalendar(month, year){
                 el.classList.remove("in-range");
             }
         })
-
+        console.log("range highligted");
     }
 
     function clearAllSelections(){
         const allDays = document.querySelectorAll(".personal__widget-day");
         allDays.forEach(el => {
             el.classList.remove('choosenForDay')
+            el.classList.remove("in-range");
+            el.querySelector(".circle").classList.remove('choosenCircle');
             el.querySelector("p").classList.remove("choosenForText");
         })
     }
 
-    function markAsStart(div, p){
-        div.classList.add('choosenForDay');
+    function markAsStart(divDay, divCircle,p){
+
+        divDay.classList.add('choosenForDay');
+        divCircle.classList.add('choosenCircle')
         p.classList.add('choosenForText');
+       
     }
 
-    function markAsEnd(div, p){
-        div.classList.add('choosenForDay');
+    function markAsEnd(divDay, divCircle,p){
+
+        divDay.classList.add('choosenForDay', 'end-date');
+        divCircle.classList.add('choosenCircle')
         p.classList.add('choosenForText');
     }
 }
