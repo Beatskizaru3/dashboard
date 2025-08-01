@@ -1,8 +1,15 @@
 @charset "UTF-8";
 .dashboard {
+  --sidebar-width: 6.7rem;
   display: grid;
   grid-template-columns: max-content 1fr 350px;
   flex-direction: row;
+  position: relative;
+}
+@media (max-width: 1408px) {
+  .dashboard {
+    grid-template-columns: 6.7rem 1fr 350px;
+  }
 }
 
 @font-face {
@@ -362,40 +369,96 @@ body {
 .sidebar {
   background: #141627;
   height: 100vh;
-  width: clamp(180px, 18vw, 260px);
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
 }
+@media (max-width: 1408px) {
+  .sidebar {
+    width: 6.75rem;
+    transition: width 0.2s ease-in-out, padding 0.2s ease-in-out;
+  }
+  .sidebar:hover {
+    width: 260px;
+  }
+  .sidebar:hover .sidebar__logo {
+    display: block;
+    width: 131px;
+  }
+  .sidebar:hover .sidebar__body {
+    padding: 0 25px;
+  }
+  .sidebar:hover .sidebar__nav {
+    cursor: pointer;
+    width: fit-content;
+  }
+  .sidebar:hover .sidebar__nav--item {
+    width: 7rem;
+    justify-content: start;
+    align-items: center;
+    padding: 1rem 3.5rem 1rem 1rem;
+  }
+  .sidebar:hover .sidebar__nav--item-p {
+    display: block;
+  }
+}
+@media (min-width: 1409px) {
+  .sidebar {
+    width: clamp(18vw, 18vw, 260px);
+  }
+}
 .sidebar::before {
   position: absolute;
   content: "";
-  top: 0%;
-  right: -90%;
+  right: -70%;
   height: 300px;
   width: 300px;
   background: radial-gradient(circle, #90AB39, transparent 100%);
   filter: blur(75px);
   z-index: 0;
+  transition: right 0.2s ease-in-out;
+}
+@media (max-width: 1408px) {
+  .sidebar::before {
+    top: 0%;
+    right: -266%;
+  }
+}
+@media (max-width: 1408px) {
+  .sidebar:hover::before {
+    right: -100%;
+  }
 }
 .sidebar::after {
   position: absolute;
   content: "";
-  top: 9%;
+  top: 15%;
   right: -102%;
   height: 300px;
   width: 300px;
   background: radial-gradient(circle, #CB4628, transparent 100%);
   filter: blur(75px);
   z-index: 0;
+  transition: right 0.2s ease-in-out;
+}
+@media (max-width: 1408px) {
+  .sidebar::after {
+    top: 20%;
+    right: -260%;
+  }
+}
+@media (max-width: 1408px) {
+  .sidebar:hover::after {
+    right: -100%;
+  }
 }
 .sidebar__body {
   padding: 0 25px;
   display: flex;
   flex-direction: column;
 }
-@media (max-width: 1370px) {
+@media (max-width: 1408px) {
   .sidebar__body {
     height: 100%;
     justify-content: space-between;
@@ -403,12 +466,21 @@ body {
 }
 .sidebar__logo {
   width: 131px;
-  margin: 3.65rem auto 4.6rem auto;
+  transition: width 0.2s ease-in-out;
 }
-@media (max-width: 1370px) {
+@media (max-width: 1408px) {
   .sidebar__logo {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
   }
+}
+.sidebar__logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 193px;
 }
 .sidebar__nav {
   display: flex;
@@ -417,8 +489,10 @@ body {
   font-size: 14px;
   row-gap: 1em;
   margin-bottom: 6rem;
+  width: fit-content;
 }
 .sidebar__nav--item {
+  transition: width 0.2s ease-in-out;
   color: #5F647E;
   font-family: Poppins;
   font-weight: 400;
@@ -426,15 +500,17 @@ body {
   flex-direction: row;
   column-gap: 1.5em;
   text-wrap: nowrap;
-  padding: 1em 4.5em 1em 1.1em;
+  overflow-x: hidden;
+  padding: 1rem 4.5rem 1rem 1rem;
   justify-content: start;
   align-items: center;
   border-radius: 13px;
   cursor: pointer;
 }
-@media (max-width: 1370px) {
-  .sidebar__nav--item-p {
-    display: none;
+@media (max-width: 1408px) {
+  .sidebar__nav--item {
+    width: 1.65rem;
+    padding: 1rem;
   }
 }
 .sidebar__nav--item-svg {
@@ -463,7 +539,7 @@ body {
   flex-direction: column;
   row-gap: 1.8rem;
 }
-@media (max-width: 1370px) {
+@media (max-width: 1408px) {
   .sidebar__promo {
     display: none;
   }
@@ -520,6 +596,9 @@ body {
 .main {
   background-color: #141627;
   padding: 2.5rem 1.5rem 0 2.5rem;
+}
+.main.expanded {
+  margin-left: 6.7rem;
 }
 .main__header {
   display: flex;
@@ -642,7 +721,7 @@ body {
 .main__proposals-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 1.7rem;
+  grid-column-gap: clamp(1.6rem, 2vw, 2rem);
   margin-top: 1.5rem;
 }
 .main__proposals-card {
@@ -832,6 +911,7 @@ body {
   background-color: #141627;
   display: flex;
   flex-direction: column;
+  width: max-content;
   padding: 2.68rem 2.5rem 0 0;
 }
 .personal__profile {

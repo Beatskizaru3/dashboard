@@ -1,5 +1,13 @@
+@use '../utils/media' as *;
+
 .dashboard{
+    --sidebar-width: 6.7rem;
     display: grid;
     grid-template-columns: max-content 1fr 350px;
+    @include desktop-small{
+        grid-template-columns: 6.7rem 1fr 350px;
+    }
     flex-direction: row;
+    position: relative;
+    
 }

@@ -1,8 +1,11 @@
 @use "../base/variables" as *;
-
+@use "../utils/media" as *;
 .main{
     background-color: $color-bg;
     padding: 2.5rem 1.5rem 0 2.5rem;
+    &.expanded{
+        margin-left: 6.7rem;
+    }
     &__header{
 
         display: flex;
@@ -137,7 +140,7 @@
         &-cards{
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            column-gap: 1.7rem;
+            grid-column-gap: clamp(1.6rem, 2vw, 2rem);
             margin-top: 1.5rem;
         }
         &-card{

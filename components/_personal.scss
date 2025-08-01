@@ -4,6 +4,7 @@
     background-color: $color-bg;
     display: flex;
     flex-direction: column;
+    width: max-content;
     padding: 2.68rem 2.5rem 0 0;
 
     &__profile{
